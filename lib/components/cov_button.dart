@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:covidfo/components/cov_text.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class CovButton extends StatelessWidget {
@@ -8,6 +9,7 @@ class CovButton extends StatelessWidget {
     @required this.onPressed,
     @required this.color,
     @required this.buttonText,
+    this.icon = false,
     this.textColor = Colors.white
   });
 
@@ -15,6 +17,7 @@ class CovButton extends StatelessWidget {
   final Color color;
   final String buttonText;
   final Color textColor;
+  final bool icon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +38,29 @@ class CovButton extends StatelessWidget {
             )
           ]
         ),
-        width: MediaQuery.of(context).size.width * .85,
-        height: 48,
+        padding: EdgeInsets.symmetric(vertical: icon ? 8.0 : 12.0),
         child: Center(
-          child: CovText(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _isIconButton(),
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _isIconButton() {
+    return
+      icon ?
+        <Widget>[
+          SvgPicture.asset(
+              'assets/icons/google.svg',
+              height: 36
+          ),
+          SizedBox(
+            width: 20.0,
+          ),
+          CovText(
             textContent: buttonText,
             textAlign: TextAlign.center,
             fontFamily: 'Quicksand',
@@ -46,8 +68,16 @@ class CovButton extends StatelessWidget {
             fontWeight: FontWeight.w700,
             textColor: textColor,
           ),
+        ]
+      : <Widget>[
+        CovText(
+          textContent: buttonText,
+          textAlign: TextAlign.center,
+          fontFamily: 'Quicksand',
+          fontSize: 20.0,
+          fontWeight: FontWeight.w700,
+          textColor: textColor,
         ),
-      ),
-    );
+      ];
   }
 }
