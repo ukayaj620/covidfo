@@ -1,7 +1,11 @@
+import 'package:covidfo/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:covidfo/pages/intro.dart';
 
-void main() => runApp(App());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(App());
+}
 
 class App extends StatelessWidget {
   // This widget is the root of your application.
@@ -9,7 +13,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Covidfo',
-      home: IntroPage(),
+      initialRoute: IntroPage.id,
+      routes: {
+        IntroPage.id: (context) => IntroPage(),
+        LoginPage.id: (context) => LoginPage()
+      },
     );
   }
 }
