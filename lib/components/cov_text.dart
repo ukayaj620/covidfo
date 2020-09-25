@@ -7,7 +7,8 @@ class CovText extends StatelessWidget {
     @required this.fontSize,
     @required this.fontWeight,
     @required this.textAlign,
-    @required this.textContent
+    @required this.textContent,
+    this.textColor = Colors.white,
   });
 
   final String fontFamily;
@@ -15,6 +16,7 @@ class CovText extends StatelessWidget {
   final FontWeight fontWeight;
   final TextAlign textAlign;
   final String textContent;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CovText extends StatelessWidget {
       this.textContent,
       textAlign: this.textAlign,
       style: TextStyle(
+        color: textColor,
         fontFamily: this.fontFamily,
         fontSize: this.fontSize,
         fontWeight: this.fontWeight,
