@@ -1,4 +1,5 @@
 import 'package:covidfo/components/cov_button.dart';
+import 'package:covidfo/components/cov_clickable_text.dart';
 import 'package:covidfo/components/cov_text.dart';
 import 'package:covidfo/components/cov_text_field.dart';
 import 'package:covidfo/constants/palette.dart';
@@ -67,9 +68,29 @@ class LoginPage extends StatelessWidget {
                   child: CovButton(
                     onPressed: () => print('Fly to sign up page'),
                     color: Palette.primaryColor,
-                    buttonText: 'Get Started',
+                    buttonText: 'Login',
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 12.0, 0, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CovText(
+                        fontFamily: 'Roboto',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                        textContent: 'Don\'t have account? ',
+                        textColor: Colors.black87,
+                      ),
+                      CovClickableText(
+                        onPressed: () => Navigator.pushNamed(context, 'sign_up'),
+                        textColor: Palette.primaryColor,
+                        text: 'Sign Up',
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
