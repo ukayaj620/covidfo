@@ -49,6 +49,7 @@ flutter:
   assets:
     - assets/images/covid19_new.svg
     - assets/images/login.svg
+    - assets/images/sign_up.svg
     - assets/icons/google.svg
 
   fonts:

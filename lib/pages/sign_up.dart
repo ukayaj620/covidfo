@@ -40,7 +40,7 @@ class SignUpPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 8.0),
                       child: SvgPicture.asset(
-                        "assets/images/login.svg",
+                        "assets/images/sign_up.svg",
                         width: MediaQuery.of(context).size.width * 0.75,
                       ),
                     ),
