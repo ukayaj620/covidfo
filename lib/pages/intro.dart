@@ -6,6 +6,10 @@ import 'package:covidfo/components/cov_text.dart';
 
 class IntroPage extends StatelessWidget {
 
+  static const String _id = 'intro';
+
+  static String get id => _id;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,10 +56,9 @@ class IntroPage extends StatelessWidget {
                 ),
               ),
               Container(
-                alignment: Alignment.bottomCenter,
                 margin: EdgeInsets.symmetric(vertical: 4.0),
                 child: CovButton(
-                  onPressed: () => print('Fly to sign up page'),
+                  onPressed: () => Navigator.pushNamed(context, 'login'),
                   color: Palette.primaryColor,
                   buttonText: 'Get Started',
                 ),
