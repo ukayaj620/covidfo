@@ -1,4 +1,5 @@
 import 'package:covidfo/components/cov_card.dart';
+import 'package:covidfo/components/cov_text.dart';
 import 'package:covidfo/constants/palette.dart';
 import 'package:covidfo/models/global_summary_model.dart';
 import 'package:covidfo/providers/global_summary_provider.dart';
@@ -20,15 +21,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<GlobalSummaryModel> futureGlobalSummary;
-  DateFormat fn = DateFormat("M-dd-yyyy");
-  String datetime = '';
+  DateFormat _dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+  final _numberFormat = NumberFormat("#,###");
+  String _datetime = '';
 
   @override
   void initState() {
     super.initState();
     final now = DateTime.now();
     setState(() {
-      datetime = fn.format(DateTime(now.year, now.month, now.day - 1));
+      _datetime = _dateFormat.format(DateTime(now.year, now.month, now.day - 1));
     });
     futureGlobalSummary = global.fetchGlobalSummary();
   }
@@ -62,26 +64,69 @@ class _HomePageState extends State<HomePage> {
 
     return RefreshIndicator(
       onRefresh: () => futureGlobalSummary = global.fetchGlobalSummary(),
-      child: ListView(
-        padding: EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 0.0),
-        children: <Widget>[
-          CovCard(
-            textColor: Colors.red[700],
-            cardText: 'Confirmed',
-            iconPath: 'assets/icons/covid19.svg',
-            numberOfCovid: data.totalConfirmed,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+            width: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CovText(
+                  textContent: 'Worlds',
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20.0,
+                  fontFamily: 'Quicksand',
+                  textAlign: TextAlign.start,
+                  textColor: Palette.textColor,
+                ),
+                Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.timer,
+                        color: Palette.primaryColor
+                      ),
+                      SizedBox(width: 2.0),
+                      CovText(
+                        textContent: _dateFormat.format(data.date),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.0,
+                        fontFamily: 'Roboto',
+                        textAlign: TextAlign.end,
+                        textColor: Colors.blue,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
           ),
-          CovCard(
-            textColor: Colors.green[700],
-            cardText: 'Recovered',
-            iconPath: 'assets/icons/covid19.svg',
-            numberOfCovid: data.totalRecovered,
-          ),
-          CovCard(
-            textColor: Colors.black54,
-            cardText: 'Deaths',
-            iconPath: 'assets/icons/covid19.svg',
-            numberOfCovid: data.totalDeaths,
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                CovCard(
+                  textColor: Colors.red[700],
+                  cardText: 'Confirmed',
+                  iconPath: 'assets/icons/infected.svg',
+                  numberOfCovid: data.totalConfirmed,
+                ),
+                CovCard(
+                  textColor: Colors.green[700],
+                  cardText: 'Recovered',
+                  iconPath: 'assets/icons/healthy.svg',
+                  numberOfCovid: data.totalRecovered,
+                ),
+                CovCard(
+                  textColor: Colors.black54,
+                  cardText: 'Deaths',
+                  iconPath: 'assets/icons/deadly.svg',
+                  numberOfCovid: data.totalDeaths,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -102,7 +147,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             SvgPicture.asset(
               "assets/icons/covid19_app_bar.svg",
-              width: MediaQuery.of(context).size.width * 0.36,
+              width: MediaQuery.of(context).size.width * 0.4,
             ),
             IconButton(
               icon: SvgPicture.asset(
