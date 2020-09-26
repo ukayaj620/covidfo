@@ -58,7 +58,7 @@ class IntroPage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.symmetric(vertical: 4.0),
                 child: CovButton(
-                  onPressed: () => Navigator.pushNamed(context, 'login'),
+                  onPressed: () => Navigator.pushNamed(context, 'home'),
                   color: Palette.primaryColor,
                   buttonText: 'Get Started',
                 ),

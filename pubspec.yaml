@@ -26,6 +26,12 @@ dependencies:
 
   http: ^0.12.0+4
   flutter_svg: ^0.19.0
+  flutter_datetime_picker: ^1.4.0
+  intl: ^0.16.1
+  shimmer: ^1.1.1
+  flutter_typeahead: ^1.8.7
+  timeago: ^2.0.26
+  charts_flutter: ^0.9.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,9 +54,10 @@ flutter:
 
   assets:
     - assets/images/covid19_new.svg
-    - assets/images/login.svg
-    - assets/images/sign_up.svg
     - assets/icons/google.svg
+    - assets/icons/covid19_app_bar.svg
+    - assets/icons/menu.svg
+    - assets/icons/covid19.svg
 
   fonts:
     - family: Quicksand

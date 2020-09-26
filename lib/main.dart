@@ -1,11 +1,12 @@
-import 'package:covidfo/pages/login.dart';
-import 'package:covidfo/pages/sign_up.dart';
+import 'package:covidfo/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:covidfo/pages/intro.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+  .then((_) => runApp(new App()));
 }
 
 class App extends StatelessWidget {
@@ -17,8 +18,7 @@ class App extends StatelessWidget {
       initialRoute: IntroPage.id,
       routes: {
         IntroPage.id: (context) => IntroPage(),
-        LoginPage.id: (context) => LoginPage(),
-        SignUpPage.id: (context) => SignUpPage(),
+        HomePage.id: (context) => HomePage(),
       },
     );
   }
