@@ -58,6 +58,9 @@ flutter:
     - assets/icons/covid19_app_bar.svg
     - assets/icons/menu.svg
     - assets/icons/covid19.svg
+    - assets/icons/deadly.svg
+    - assets/icons/infected.svg
+    - assets/icons/healthy.svg
 
   fonts:
     - family: Quicksand
