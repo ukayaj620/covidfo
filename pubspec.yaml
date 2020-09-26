@@ -48,9 +48,9 @@ flutter:
 
   assets:
     - assets/images/covid19_new.svg
-    - assets/images/login.svg
-    - assets/images/sign_up.svg
     - assets/icons/google.svg
+    - assets/icons/covid19_app_bar.svg
+    - assets/icons/menu.svg
 
   fonts:
     - family: Quicksand
