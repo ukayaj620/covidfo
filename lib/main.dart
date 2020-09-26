@@ -1,3 +1,4 @@
+import 'package:covidfo/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:covidfo/pages/intro.dart';
 
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
       initialRoute: IntroPage.id,
       routes: {
         IntroPage.id: (context) => IntroPage(),
+        HomePage.id: (context) => HomePage(),
       },
     );
   }
