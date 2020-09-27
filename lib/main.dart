@@ -1,3 +1,4 @@
+import 'package:covidfo/pages/detail.dart';
 import 'package:covidfo/pages/home.dart';
 import 'package:covidfo/pages/about.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class App extends StatelessWidget {
         IntroPage.id: (context) => IntroPage(),
         HomePage.id: (context) => HomePage(),
         AboutPage.id: (context) => AboutPage(),
+        DetailCountryPage.id: (context) => DetailCountryPage(),
       },
     );
   }
