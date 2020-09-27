@@ -1,19 +1,9 @@
 import 'package:covidfo/components/cov_card_human.svg.dart';
+import 'package:covidfo/components/cov_text.dart';
 import 'package:covidfo/components/cov_up_app_bar.dart';
 import 'package:covidfo/constants/palette.dart';
 import 'package:flutter/material.dart';
-
-class Developer {
-  String name;
-  String studentId;
-  String imagePath;
-
-  Developer({
-    this.name,
-    this.studentId,
-    this.imagePath
-  });
-}
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AboutPage extends StatelessWidget {
 
@@ -21,40 +11,48 @@ class AboutPage extends StatelessWidget {
 
   static String get id => _id;
 
-  List<Developer> developer = [
-    Developer(
-      name: 'Jayaku Briliantio',
-      studentId: '32180088',
-      imagePath: 'assets/human/jayaku.jpg',
-    ),
-    Developer(
-      name: 'Ferdy Nicolas',
-      studentId: '32180018',
-      imagePath: 'assets/human/ferdy.jpg',
-    ),
-    Developer(
-      name: 'Daniel Ronaldo Pangestu',
-      studentId: '32180091',
-      imagePath: 'assets/human/daniel.png',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CovUpAppBar(appBarText: 'About'),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
-        color: Palette.backgroundColor,
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemBuilder: (context, index) =>  CovCardHuman(
-            name: developer[index].name,
-            studentId: developer[index].studentId,
-            imagePath: developer[index].imagePath,
-          ),
-          itemCount: developer.length,
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+          width: MediaQuery.of(context).size.width,
+          color: Palette.backgroundColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SvgPicture.asset(
+                'assets/icons/covid19_app_bar.svg',
+                width: MediaQuery.of(context).size.width * 0.75,
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              CovText(
+                textContent: 'What is it?',
+                textAlign: TextAlign.center,
+                fontFamily: 'Quicksand',
+                fontSize: 24.0,
+                fontWeight: FontWeight.w900,
+                textColor: Palette.textColor,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                child: CovText(
+                  textContent: 'Covidfo is a mobile application to provide information of COVID-19, '
+                      'provided from Worldometer, John Hopkins University, and more.\n'
+                      'During this pandemic, it is important to keep track of COVID-19 information.',
+                  textAlign: TextAlign.justify,
+                  fontFamily: 'Roboto',
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  textColor: Palette.textColor,
+                ),
+              ),
+            ],
+          )
         ),
       ),
     );
