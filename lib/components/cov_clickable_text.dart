@@ -1,5 +1,4 @@
 import 'package:covidfo/components/cov_text.dart';
-import 'package:covidfo/constants/palette.dart';
 import 'package:flutter/material.dart';
 
 

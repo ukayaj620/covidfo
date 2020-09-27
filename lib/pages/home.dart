@@ -44,29 +44,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(context),
-      body: Center(
-        child: FutureBuilder(
-          future: Future.wait([futureGlobalSummary, futureCountrySummary]),
-          builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-            if (snapshot.hasError) {
-              return GestureDetector(
-                onDoubleTap: () {
-                  futureGlobalSummary = global.fetchGlobalSummary();
-                  futureCountrySummary = country.fetchCountrySummary();
-                  setState(() {});
-                },
-                child: Text("${snapshot.error}")
-              );
-            }
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return CircularProgressIndicator();
-              default:
-                return !snapshot.hasData
-                ? Text('No Data Found')
-                :_listOfContent(context, snapshot.data);
-            }
-          },
+      body: SafeArea(
+        child: Center(
+          child: FutureBuilder(
+            future: Future.wait([futureGlobalSummary, futureCountrySummary]),
+            builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+              if (snapshot.hasError) {
+                return GestureDetector(
+                  onDoubleTap: () {
+                    futureGlobalSummary = global.fetchGlobalSummary();
+                    futureCountrySummary = country.fetchCountrySummary();
+                    setState(() {});
+                  },
+                  child: Text("${snapshot.error}")
+                );
+              }
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return CircularProgressIndicator();
+                default:
+                  return !snapshot.hasData
+                  ? Text('No Data Found')
+                  :_listOfContent(context, snapshot.data);
+              }
+            },
+          ),
         ),
       ),
     );
@@ -75,7 +77,7 @@ class _HomePageState extends State<HomePage> {
   Widget _listOfContent(BuildContext context, data) {
 
     GlobalSummaryModel globalData = data[0];
-    List<dynamic> countriesData = data[1].Countries;
+    List<dynamic> countriesData = data[1].countries;
 
     return RefreshIndicator(
       onRefresh: () {
@@ -194,12 +196,12 @@ class _HomePageState extends State<HomePage> {
               icon: SvgPicture.asset(
                 "assets/icons/menu.svg",
               ),
-              onPressed: () => print('Fly to about'),
+              onPressed: () => Navigator.pushNamed(context, "about"),
             )
           ],
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Palette.backgroundColor,
       elevation: 4.0,
     );
   }

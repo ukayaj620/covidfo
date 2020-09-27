@@ -1,13 +1,13 @@
 class CountrySummaryModel {
-  final List<dynamic> Countries;
+  final List<dynamic> countries;
 
   CountrySummaryModel({
-    this.Countries
+    this.countries
   });
 
   factory CountrySummaryModel.fromJson(List<dynamic> json) {
     return CountrySummaryModel(
-      Countries: json
+      countries: json
     );
   }
 }
