@@ -24,7 +24,7 @@ class AboutPage extends StatelessWidget {
   List<Developer> developer = [
     Developer(
       name: 'Jayaku Briliantio',
-      studentId: '32180018',
+      studentId: '32180088',
       imagePath: 'assets/human/jayaku.jpg',
     ),
     Developer(
@@ -34,7 +34,7 @@ class AboutPage extends StatelessWidget {
     ),
     Developer(
       name: 'Daniel Ronaldo Pangestu',
-      studentId: '32180018',
+      studentId: '32180091',
       imagePath: 'assets/human/daniel.png',
     ),
   ];
