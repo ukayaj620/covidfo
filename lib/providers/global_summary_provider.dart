@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class GlobalSummaryProvider {
 
-  String _url = 'https://covid19.mathdro.id/api';
+  String _url = 'https://corona.lmao.ninja/v3/covid-19/all';
 
   Future<GlobalSummaryModel> fetchGlobalSummary() async {
     final response = await http.Client().get(_url, headers: {"Accept": "application/json"});
