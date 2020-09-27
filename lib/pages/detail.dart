@@ -13,7 +13,6 @@ class DetailCountryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dynamic args = ModalRoute.of(context).settings.arguments;
-    print(args);
 
     return Scaffold(
       appBar: CovUpAppBar(
