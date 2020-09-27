@@ -1,4 +1,5 @@
-import 'package:covidfo/components/cov_card_summary.dart';
+import 'package:covidfo/components/cov_card_country.dart';
+import 'package:covidfo/components/cov_card_global.dart';
 import 'package:covidfo/components/cov_text.dart';
 import 'package:covidfo/constants/palette.dart';
 import 'package:covidfo/models/country_summary_model.dart';
@@ -74,13 +75,12 @@ class _HomePageState extends State<HomePage> {
   Widget _listOfContent(BuildContext context, data) {
 
     GlobalSummaryModel globalData = data[0];
-    CountrySummaryModel countriesData = data[1];
+    List<dynamic> countriesData = data[1].Countries;
 
     return RefreshIndicator(
       onRefresh: () {
         futureGlobalSummary = global.fetchGlobalSummary();
-        futureCountrySummary = country.fetchCountrySummary();
-        return;
+        return futureCountrySummary = country.fetchCountrySummary();
       },
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -153,7 +153,21 @@ class _HomePageState extends State<HomePage> {
                 textColor: Palette.textColor,
               ),
             ),
-
+            ListView.builder(
+              shrinkWrap: true,
+              itemBuilder: (context, index) => CovCountryCard(
+                imageUrl: countriesData[index]['countryInfo']['flag'],
+                cases: countriesData[index]['cases'],
+                todayCases: countriesData[index]['todayCases'],
+                recovered: countriesData[index]['recovered'],
+                todayRecovered: countriesData[index]['todayRecovered'],
+                deaths: countriesData[index]['deaths'],
+                todayDeaths: countriesData[index]['todayDeaths'],
+              ),
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemCount: countriesData.length == 0 ? null : 5,
+            )
           ],
         ),
       ),
