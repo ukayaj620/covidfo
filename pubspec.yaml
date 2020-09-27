@@ -30,8 +30,6 @@ dependencies:
   intl: ^0.16.1
   shimmer: ^1.1.1
   flutter_typeahead: ^1.8.7
-  timeago: ^2.0.26
-  charts_flutter: ^0.9.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -62,6 +60,7 @@ flutter:
     - assets/icons/infected.svg
     - assets/icons/healthy.svg
     - assets/icons/arrow.svg
+    - assets/icons/coding.svg
     - assets/human/ferdy.jpg
     - assets/human/jayaku.jpg
     - assets/human/daniel.png
