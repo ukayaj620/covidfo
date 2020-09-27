@@ -231,7 +231,8 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               icon: SvgPicture.asset(
-                "assets/icons/coding.svg",
+                "assets/icons/info.svg",
+                width: 36.0,
               ),
               onPressed: () => Navigator.pushNamed(context, "about"),
             )
