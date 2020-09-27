@@ -61,6 +61,10 @@ flutter:
     - assets/icons/deadly.svg
     - assets/icons/infected.svg
     - assets/icons/healthy.svg
+    - assets/icons/arrow.svg
+    - assets/human/ferdy.jpg
+    - assets/human/jayaku.jpg
+    - assets/human/daniel.png
 
   fonts:
     - family: Quicksand
