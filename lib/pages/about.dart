@@ -1,4 +1,3 @@
-import 'package:covidfo/components/cov_card_human.svg.dart';
 import 'package:covidfo/components/cov_text.dart';
 import 'package:covidfo/components/cov_up_app_bar.dart';
 import 'package:covidfo/constants/palette.dart';
