@@ -89,13 +89,13 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+              padding: EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 0),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CovText(
-                    textContent: 'Worlds',
+                    textContent: 'Worldwide',
                     fontWeight: FontWeight.w800,
                     fontSize: 20.0,
                     fontFamily: 'Quicksand',
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
               width: double.infinity,
               child: CovText(
-                textContent: 'Worlds',
+                textContent: 'Top 5 Most Infected Country',
                 fontWeight: FontWeight.w800,
                 fontSize: 20.0,
                 fontFamily: 'Quicksand',
@@ -157,14 +157,17 @@ class _HomePageState extends State<HomePage> {
             ),
             ListView.builder(
               shrinkWrap: true,
-              itemBuilder: (context, index) => CovCountryCard(
-                imageUrl: countriesData[index]['countryInfo']['flag'],
-                cases: countriesData[index]['cases'],
-                todayCases: countriesData[index]['todayCases'],
-                recovered: countriesData[index]['recovered'],
-                todayRecovered: countriesData[index]['todayRecovered'],
-                deaths: countriesData[index]['deaths'],
-                todayDeaths: countriesData[index]['todayDeaths'],
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Navigator.pushNamed(context, 'detail', arguments: countriesData[index]),
+                child: CovCountryCard(
+                  imageUrl: countriesData[index]['countryInfo']['flag'],
+                  cases: countriesData[index]['cases'],
+                  todayCases: countriesData[index]['todayCases'],
+                  recovered: countriesData[index]['recovered'],
+                  todayRecovered: countriesData[index]['todayRecovered'],
+                  deaths: countriesData[index]['deaths'],
+                  todayDeaths: countriesData[index]['todayDeaths'],
+                ),
               ),
               physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,
