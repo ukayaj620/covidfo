@@ -1,6 +1,7 @@
 import 'package:covidfo/pages/detail.dart';
 import 'package:covidfo/pages/home.dart';
 import 'package:covidfo/pages/about.dart';
+import 'package:covidfo/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:covidfo/pages/intro.dart';
 import 'package:flutter/services.dart';
@@ -17,8 +18,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Covidfo',
-      initialRoute: IntroPage.id,
+      initialRoute: Splash.id,
       routes: {
+        Splash.id: (context) => Splash(),
         IntroPage.id: (context) => IntroPage(),
         HomePage.id: (context) => HomePage(),
         AboutPage.id: (context) => AboutPage(),
