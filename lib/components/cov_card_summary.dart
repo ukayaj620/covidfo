@@ -6,9 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
 Function matchFunc = (Match match) => '${match[1]}.';
 
-class CovCard extends StatelessWidget {
+class CovCardGlobal extends StatelessWidget {
 
-  CovCard({
+  CovCardGlobal({
     this.iconPath,
     this.textColor,
     this.cardText,
