@@ -1,5 +1,8 @@
-# covidfo
- A Simple Coronavirus Information Tracker Application
+# COVIDFo
+
+A Simple and Friendly User COVID-19 Information Tracker Application.
+
+Build with Flutter
 
 ```
 Copyright 2020 Jayaku Briliantio
