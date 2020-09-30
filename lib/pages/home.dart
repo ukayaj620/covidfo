@@ -32,15 +32,10 @@ class _HomePageState extends State<HomePage> {
   Future<CountrySummaryModel> futureCountrySummary;
   Future<SingleCountrySummaryModel> futureSingleCountrySummary;
   DateFormat _dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
-  String _datetime = '';
 
   @override
   void initState() {
     super.initState();
-    final now = DateTime.now();
-    setState(() {
-      _datetime = _dateFormat.format(DateTime(now.year, now.month, now.day - 1));
-    });
     futureGlobalSummary = global.fetchGlobalSummary();
     futureCountrySummary = country.fetchCountrySummary();
     futureSingleCountrySummary = singleCountry.fetchSingleCountrySummary('IDN');
@@ -91,12 +86,16 @@ class _HomePageState extends State<HomePage> {
     List<dynamic> countriesData = data[1].countries;
     SingleCountrySummaryModel singleCountryData = data[2];
 
-    return RefreshIndicator(
-      onRefresh: () {
+    Future<void> _fetchData() async {
+      setState(() {
         futureGlobalSummary = global.fetchGlobalSummary();
+        futureCountrySummary = country.fetchCountrySummary();
         futureSingleCountrySummary = singleCountry.fetchSingleCountrySummary('IDN');
-        return futureCountrySummary = country.fetchCountrySummary();
-      },
+      });
+    }
+
+    return RefreshIndicator(
+      onRefresh: _fetchData,
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
