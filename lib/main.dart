@@ -1,6 +1,7 @@
 import 'package:covidfo/pages/detail.dart';
 import 'package:covidfo/pages/home.dart';
 import 'package:covidfo/pages/about.dart';
+import 'package:covidfo/pages/search.dart';
 import 'package:covidfo/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:covidfo/pages/intro.dart';
@@ -25,6 +26,7 @@ class App extends StatelessWidget {
         HomePage.id: (context) => HomePage(),
         AboutPage.id: (context) => AboutPage(),
         DetailCountryPage.id: (context) => DetailCountryPage(),
+        SearchPage.id: (context) => SearchPage(),
       },
     );
   }
