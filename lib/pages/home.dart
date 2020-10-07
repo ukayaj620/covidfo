@@ -62,7 +62,12 @@ class _HomePageState extends State<HomePage> {
                     futureSingleCountrySummary = singleCountry.fetchSingleCountrySummary('IDN');
                     setState(() {});
                   },
-                  child: Text("${snapshot.error}")
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    alignment: Alignment.center,
+                    child: Text("Double Tap To Reload"),
+                  ),
                 );
               }
               switch (snapshot.connectionState) {
@@ -71,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 default:
                   return !snapshot.hasData
                   ? Text('No Data Found')
-                  :_listOfContent(context, snapshot.data);
+                  : _listOfContent(context, snapshot.data);
               }
             },
           ),
@@ -228,13 +233,25 @@ class _HomePageState extends State<HomePage> {
               "assets/icons/covid19_app_bar.svg",
               width: MediaQuery.of(context).size.width * 0.4,
             ),
-            IconButton(
-              icon: SvgPicture.asset(
-                "assets/icons/info.svg",
-                width: 36.0,
-              ),
-              onPressed: () => Navigator.pushNamed(context, "about"),
-            )
+            Row(
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    size: 32.0,
+                  ),
+                  color: Palette.primaryColor,
+                  onPressed: () => Navigator.pushNamed(context, "search"),
+                ),
+                IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/info.svg",
+                    width: 36.0,
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, "about"),
+                )
+              ],
+            ),
           ],
         ),
       ),
