@@ -31,8 +31,8 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       backgroundColor: Palette.backgroundColor,
       body: Center(
-        child: SvgPicture.asset(
-          'assets/icons/covid19_app_bar.svg',
+        child: Image(
+          image: AssetImage('assets/images/covidfo.png'),
           height: 64.0,
         ),
       ),
