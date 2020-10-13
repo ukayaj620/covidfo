@@ -63,6 +63,7 @@ flutter:
     - assets/icons/arrow.svg
     - assets/icons/coding.svg
     - assets/icons/info.svg
+    - assets/images/covidfo.png
 
   fonts:
     - family: Quicksand
